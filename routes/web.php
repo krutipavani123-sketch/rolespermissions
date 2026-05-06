@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('create', [Permissioncontroller::class, 'create']);
+    Route::post('store', [Permissioncontroller::class, 'store']);
+    Route::get('list', [Permissioncontroller::class, 'list']);
 });
 
 require __DIR__ . '/auth.php';

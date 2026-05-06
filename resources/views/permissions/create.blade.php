@@ -7,9 +7,23 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                   
+                   <form action="{{ url('store') }}" method="post">
+@csrf
+                        <div>
+                            <label for="" class="text-lg font-medium">Name</label>
+                            <div class="my-3">
+                                <input value="{{ old('name') }}" name="name" type="text" class="border border-gray-300 shadow-sm w-1/2 rounded-lg">
+                                    @error('name')
+                                    <p class="text-red-400 font-medium">{{ $message }}</p>
+                                    @enderror
+                            </div>
+                            <button class="bg-slate-700 text-sm rounded-md px-5 py-4">Save</button>
+                        </div>
+                   </form>
                 </div>
             </div>
         </div>
