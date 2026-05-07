@@ -46,12 +46,36 @@ class Permissioncontroller extends Controller
             return redirect('create')->withInput()->withErrors($validator);
         }
     }
-  
-
-    public function edit() {}
 
 
-    public function update() {}
+    public function edit($id)
+    {
+        $permission = Permission::findOrFail($id);
+        return view('permissions.edit', compact('permission'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $permission = Permission::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:3|unique:permissions,name,' . $id
+
+        ]);
+
+        if ($validator->passes()) {
+            // $permission->update(['name'=> $request->name]);
+            $permission->name = $request->name;
+            $permission->save();
+            return redirect()->route('list', $id)
+                ->with('success', 'Updated');
+        } else {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+    }
 
     public function destroy() {}
 }

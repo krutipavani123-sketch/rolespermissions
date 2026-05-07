@@ -43,7 +43,11 @@
             <td class="px-6 py-3 text-left">{{ $permission->created_at->format('d M, Y') }}</td>
 
             <td class="px-6 py-3 text-left">
-                <a href="#"><i class="bi bi-pencil-square"></i></a>
+
+                <a href="{{ route('edit', $permission->id) }}">
+    <i class="bi bi-pencil-square"></i>
+</a>
+
                 <a href="#" ><i class="bi bi-trash2-fill"></i></a>
             </td>
         </tr>

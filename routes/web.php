@@ -41,6 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::get('create', [permissioncontroller::class, 'create'])->name('create');
     Route::post('store', [permissioncontroller::class, 'store'])->name('store');
     Route::get('list', [permissioncontroller::class, 'list'])->name('list');
+
+    Route::get('edit/{id}', [permissioncontroller::class, 'edit'])->name('edit');
+    Route::put('update/{id}', [permissioncontroller::class, 'update'])->name('update');
 });
 
 require __DIR__ . '/auth.php';
