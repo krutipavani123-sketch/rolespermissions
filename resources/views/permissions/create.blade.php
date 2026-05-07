@@ -14,14 +14,17 @@
                    <form action="{{ url('store') }}" method="post">
 @csrf
                         <div>
-                            <label for="" class="text-lg font-medium">Name</label>
+                            <label for="" class="text-lg font-medium">Permission</label>
                             <div class="my-3">
+
                                 <input value="{{ old('name') }}" name="name" type="text" class="border border-gray-300 shadow-sm w-1/2 rounded-lg">
+
                                     @error('name')
                                     <p class="text-red-400 font-medium">{{ $message }}</p>
                                     @enderror
                             </div>
-                            <button class="bg-slate-700 text-sm rounded-md px-5 py-4">Save</button>
+
+                            <button class="bg-slate-700 text-sm rounded-md px-5 py-4 text-white ">Save</button>
                         </div>
                    </form>
                 </div>
