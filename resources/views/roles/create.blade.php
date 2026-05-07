@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Add Permissions') }}
+            {{ __('Add Roles') }}
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                   <form action="{{ url('store') }}" method="post">
+                   <form action="{{ route('roles.store') }}" method="post">
 @csrf
                         <div>
                             <label for="" class="text-lg font-medium">Permission</label>
@@ -24,7 +24,17 @@
                                     @enderror
                             </div>
 
-                            <button class="bg-slate-700 text-sm rounded-md px-5 py-4 text-white ">Save</button>
+                            <div class="grid grid-cols-4 mt-3">
+                                @if($permissions->isNotEmpty())
+                                @foreach($permissions as $permission)
+                                <div class="mt-3">
+                                    <input type="checkbox" id="permission-{{ $permission->id }}" class="rounded" name="permission[]" value="{{ $permission->name }}">
+                                    <label for="" >{{ $permission->name }}</label>
+                                </div>
+                                @endforeach
+                                @endif
+                            </div>
+                            <button class="bg-slate-700 text-sm rounded-md px-5 py-2 text-white ">Save</button>
                         </div>
                    </form>
                 </div>

@@ -79,7 +79,7 @@ class Permissioncontroller extends Controller
 
     public function delete(Request $request, $id)
     {
-        $permission = Permission::find($id);
+        $permission = Permission::findOrFail($id);
         $permission->delete();
         if ($permission) {
 

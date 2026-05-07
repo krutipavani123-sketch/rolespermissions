@@ -8,6 +8,7 @@ use App\Models\register;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use App\Models\user;
+use App\Http\Controllers\rolecontroller;
 
 
 Route::get('/', function () {
@@ -24,20 +25,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-
-    //Route::get('register', [registercontroller::class, 'register']);
-    //Route::post('register', [registercontroller::class, 'register']);
-
-
-
-
-    // Route::get('roles', [permissioncontroller::class, 'roles']);
-    // Route::get('permissions', [permissioncontroller::class, 'permissions']);
-    // Route::get('users', [permissioncontroller::class, 'users']);
-    // Route::get('articales', [permissioncontroller::class, 'articales']);
-
-
-
     Route::get('create', [permissioncontroller::class, 'create'])->name('create');
     Route::post('store', [permissioncontroller::class, 'store'])->name('store');
     Route::get('list', [permissioncontroller::class, 'list'])->name('list');
@@ -45,7 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::get('edit/{id}', [permissioncontroller::class, 'edit'])->name('edit');
     Route::put('update/{id}', [permissioncontroller::class, 'update'])->name('update');
 
-        Route::get('delete/{id}', [permissioncontroller::class, 'delete'])->name('delete');
+    Route::get('delete/{id}', [permissioncontroller::class, 'delete'])->name('delete');
+
+
+    // Route::get('roles', [rolecontroller::class, 'roles'])->name('roles');
+    Route::get('roles/create', [rolecontroller::class, 'create'])->name('roles.create');
+    Route::post('roles/store', [rolecontroller::class, 'store'])->name('roles.store');
+    Route::get('roles/list', [rolecontroller::class, 'list'])->name('roles.list');
 });
 
 require __DIR__ . '/auth.php';
@@ -63,3 +56,14 @@ require __DIR__ . '/auth.php';
     //     $user->assignRole('admin');
     //     return view('admin.dashboard');
     // });
+
+        //Route::get('register', [registercontroller::class, 'register']);
+    //Route::post('register', [registercontroller::class, 'register']);
+
+
+
+
+    // Route::get('roles', [permissioncontroller::class, 'roles']);
+    // Route::get('permissions', [permissioncontroller::class, 'permissions']);
+    // Route::get('users', [permissioncontroller::class, 'users']);
+    // Route::get('articales', [permissioncontroller::class, 'articales']);
