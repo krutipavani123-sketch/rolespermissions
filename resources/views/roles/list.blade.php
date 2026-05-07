@@ -35,7 +35,7 @@
             <th class="px-6 py-3 text-left">Permissions</th>
 
             <th class="px-6 py-3 text-left">Created</th>
-            {{-- <th class="px-6 py-3 text-left">Action</th> --}}
+            <th class="px-6 py-3 text-left">Action</th>
         </tr>
     </thead>
 
@@ -46,15 +46,15 @@
             <td class="px-6 py-3 text-left">{{ $role->name }}</td>
             <td class="px-6 py-3 text-left">{{ $role->permissions->pluck('name')->implode(',') }}</td>
             <td class="px-6 py-3 text-left">{{ $role->created_at->format('d M, Y') }}</td>
-{{-- 
+
             <td class="px-6 py-3 text-left">
 
-                <a href="{{ route('edit', $role->id) }}">
+                <a href="{{ route('roles.edit', $role->id) }}">
     <i class="bi bi-pencil-square"></i>
 </a>
 
-                <a href="{{ route('delete',$role->id) }}" ><i class="bi bi-trash2-fill"></i></a>
-            </td> --}}
+                <a href="{{ route('roles.delete',$role->id) }}" ><i class="bi bi-trash2-fill"></i></a>
+            </td>
         </tr>
         @endforeach
     </tbody>

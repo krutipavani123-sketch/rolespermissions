@@ -1,4 +1,146 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+
+            <!-- LEFT SIDE -->
+            <div class="flex items-center space-x-6">
+
+                <a href="{{ route('dashboard') }}">
+                    <x-application-logo class="h-9 w-auto text-gray-800 dark:text-white" />
+                </a>
+
+                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    Dashboard
+                </x-nav-link>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="flex items-center space-x-4">
+
+                <!-- 🔵 ROLES DROPDOWN -->
+                <x-dropdown align="right" width="48">
+
+                    <x-slot name="trigger">
+                        <button class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white">
+                            Roles ▼
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+
+                    <x-dropdown-link :href="route('roles.create')">
+    Create Role
+</x-dropdown-link>
+
+                    </x-slot>
+
+                </x-dropdown>
+
+                <!-- 🟢 LIST DROPDOWN -->
+                <x-dropdown align="right" width="48">
+
+                    <x-slot name="trigger">
+                        <button class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white">
+                            List ▼
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+
+                        <x-dropdown-link :href="route('list')">
+    Admin List
+</x-dropdown-link>
+
+                        <x-dropdown-link :href="route('roles.list')">
+    User List
+</x-dropdown-link>
+
+                    </x-slot>
+
+                </x-dropdown>
+
+                <!-- 🟡 PERMISSIONS DROPDOWN -->
+                <x-dropdown align="right" width="48">
+
+                    <x-slot name="trigger">
+                        <button class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white">
+                            Permissions ▼
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+
+<x-dropdown-link :href="route('create')">
+    Create Permission
+</x-dropdown-link>
+
+                    </x-slot>
+
+                </x-dropdown>
+
+                <!-- 👤 USER NAME DROPDOWN -->
+                <x-dropdown align="right" width="48">
+
+                    <x-slot name="trigger">
+                        <button class="px-3 py-2 text-sm text-gray-600 dark:text-gray-300">
+                            {{ Auth::user()->name }} ▼
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+
+                        <x-dropdown-link :href="route('profile.edit')">
+                            Profile
+                        </x-dropdown-link>
+
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault(); this.closest('form').submit();">
+                                Logout
+                            </x-dropdown-link>
+
+                        </form>
+
+                    </x-slot>
+
+                </x-dropdown>
+
+            </div>
+
+        </div>
+    </div>
+
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -131,7 +273,7 @@
     </div>
 </nav>
 
-
+ --}}
 
 
 
